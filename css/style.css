@@ -1,0 +1,23 @@
+
+.img_header img{
+	width: 100%;
+	margin-bottom: 10%;
+}
+#buttonAdd{
+	width: 100%;
+}
+.footer{
+	background-color: 'blue';
+}
+.st{
+	float: right;
+}
+.bar{
+	text-align: center;
+	padding-top: 45px;
+	height:100px;
+	background-color: #80BDFF;
+}
+span{
+	text-align: right;
+}
