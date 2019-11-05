@@ -30,10 +30,13 @@ include 'menu.php';
 						  <img src="<?php echo $row["image"];?>" class="card-img-top">
 						 	<div class="card-body">
 							  <h5 class="card-title"><?php echo $row["title"];?></h5>
-							  <p class="card-text"><?php echo $row["description"];?></p>
+							  <p class="card-text"><?php echo substr($row["description"], 0, 100). "...";?></p>
+							 
 							  <a href="article.php?idAr=<?php echo $row['id']; ?>" >Read more</a>
 						 	</div>
 						</div>
+						<a href="update_delete.php?del=<?php echo $row['id']; ?>">Delete</a>
+						<a href="">Update</a>
 					</div>
 				<?php }?>
 			</div>
@@ -48,6 +51,8 @@ else {
 ?>
 		</div>
 	</div>
+
+
 		<?php mysqli_close($conn);?>	
 	</div>
 

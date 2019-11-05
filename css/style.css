@@ -7,7 +7,14 @@
 	width: 100%;
 }
 .footer{
-	background-color: 'blue';
+	background-image: url("../images/footer2.png");
+	 background-repeat: no-repeat;
+	 height: 300px; 
+	 background-size:100% 100%;
+}
+.copyright{
+	background-color: #80BDFF;
+
 }
 .st{
 	float: right;
@@ -21,3 +28,28 @@
 span{
 	text-align: right;
 }
+
+#form1 {
+
+display:none;
+
+}
+
+.marg{
+	margin-left:10%;
+	margin-right:10%;
+	
+}
+.radui{
+
+	border-radius: 30px 50px;
+	width:200px;
+}
+.ways{
+	background-color: #DDCFBC;
+	width: 100%;
+	height: 400px;
+	padding-top: 5%;
+}
+
+

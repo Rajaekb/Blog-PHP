@@ -2,9 +2,9 @@
 session_start();
 include 'menu.php';
 ?>
-
-
-<div class="container"><form action="" method="POST">
+<div class="container">
+Enter your login and pasword to connect to your space.
+<form action="" method="POST">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" name="Email" aria-describedby="emailHelp" placeholder="Enter email">

@@ -1,6 +1,6 @@
+  
 <?php session_start();
 include 'menu.php';
-
 if (isset($_SESSION['Id'] ) ) {
   include 'connexion.php';
   $sql = "SELECT Name FROM categories";
@@ -17,7 +17,7 @@ if (isset($_SESSION['Id'] ) ) {
     <label for="categorie">Categorie</label>
       
     <select class="form-control" id="categorie" name="categorie">
-   <?php 
+       <?php 
             if ($result->num_rows > 0){
             ?>
         <option value="" disabled selected>Choose a categorie</option>
@@ -30,17 +30,9 @@ if (isset($_SESSION['Id'] ) ) {
 
   <div class="form-group">
     <label for="inputDesc"> Description :</label>
-    <textarea class="form-control" id="inputDesc" name="description"></textarea> 
+    <textarea class="form-control" id="inputDesc" rows="5" name="description"></textarea> 
   </div>
-       <div class="form-group">
-    <label for="inputcity"> City :</label>
-    <input type="text" class="form-control" id="inputcity" name="city">
-  </div>
-     <div class="form-group">
-    <label for="inputcountry"> Country :</label>
-    <input type="text" class="form-control" id="inputcountry" name="country">
-  </div>
-
+    
   <div class="form-group row">
     <label for="inputImage" class="col-sm-2 col-form-label">choose Image :</label>
       <div class="col-sm-10">
@@ -52,25 +44,17 @@ if (isset($_SESSION['Id'] ) ) {
  
 </div>
 <?php 
-
 if(isset($_POST["add"])){
   $Title=$_POST["title"];
   $Categorie=$_POST["categorie"];
-  $Description=mysqli_real_escape_string($conn,$_POST["description"]);
-  $City=$_POST["city"];
-  $Country=$_POST["country"];
-  $idautor=$_SESSION['Id'];
-
+  $Description=$_POST["description"];
+    
   //image upload file
-
   $target_dir = "images/uploads/";
   $target_file = $target_dir . basename($_FILES["image"]["name"]);
-
   $uploadOk = 1;
   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
   // Check if image file is a actual image or fake image
-
   $check = getimagesize($_FILES["image"]["tmp_name"]);
   if($check !== false) {
     echo "File is an image - " . $check["mime"] . ".";
@@ -105,19 +89,17 @@ if(isset($_POST["add"])){
       } else {
           echo "Sorry, there was an error uploading your file.";
       }
-  
-  $sql="insert into article (title,categorie,description,image,city,country,id_autor) values ('$Title','$Categorie','$Description','$target_file','$City','$Country','$idautor')";
-  
+  }
+  $sql="insert into article (title,categorie,description,image) values ('$Title','$Categorie','$Description','$target_file')";
   if ($conn->query($sql) === TRUE) {
       echo "New article created successfully";
       
      } 
-   }}
+   }
   ?><a href="logout.php">Logout</a>
   <?php
   } 
 }
-
 else{
       header("location:login.php");
 }
@@ -125,5 +107,5 @@ else{
 </div>
 
 </body>
-  
+
 </html>

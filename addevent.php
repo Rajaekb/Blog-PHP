@@ -2,46 +2,18 @@
 include 'menu.php';
 
 if (isset($_SESSION['Id'] ) ) {
-  include 'connexion.php';
-  $sql = "SELECT Name FROM categories";
-  $result = mysqli_query($conn, $sql);?>
-
- <div class="container"> 	
- 	<form  action="add.php" method="POST" class="form" enctype="multipart/form-data">
+  include 'connexion.php';?>
+   <div class="container"> 
+ 	<form  action="addevent.php" method="POST" class="form" enctype="multipart/form-data">
 	 <div class="form-group">
     <label for="inputTitle"> Title :</label>
     <input type="text" class="form-control" id="inputTitle" name="title">
   </div>
-   
-  <div class="form-group">
-    <label for="categorie">Categorie</label>
-      
-    <select class="form-control" id="categorie" name="categorie">
-   <?php 
-            if ($result->num_rows > 0){
-            ?>
-        <option value="" disabled selected>Choose a categorie</option>
-        <?php while($row = $result->fetch_assoc()){?>
-                <option><?php echo $row["Name"];}?></option>
-             
-    </select>
-          <?php} ?>  
-  </div> 
-
-  <div class="form-group">
+ <div class="form-group">
     <label for="inputDesc"> Description :</label>
-    <textarea class="form-control" id="inputDesc" name="description"></textarea> 
+    <textarea class="form-control" id="inputDesc" rows="5" name="description"></textarea> 
   </div>
-       <div class="form-group">
-    <label for="inputcity"> City :</label>
-    <input type="text" class="form-control" id="inputcity" name="city">
-  </div>
-     <div class="form-group">
-    <label for="inputcountry"> Country :</label>
-    <input type="text" class="form-control" id="inputcountry" name="country">
-  </div>
-
-  <div class="form-group row">
+ <div class="form-group row">
     <label for="inputImage" class="col-sm-2 col-form-label">choose Image :</label>
       <div class="col-sm-10">
         <input type="file" class="form-control-file" id="inputImage" name="image">
@@ -49,17 +21,12 @@ if (isset($_SESSION['Id'] ) ) {
   <input type="submit" name="add">Save
    
   </form>
- 
-</div>
+ </div>
 <?php 
 
 if(isset($_POST["add"])){
   $Title=$_POST["title"];
-  $Categorie=$_POST["categorie"];
-  $Description=mysqli_real_escape_string($conn,$_POST["description"]);
-  $City=$_POST["city"];
-  $Country=$_POST["country"];
-  $idautor=$_SESSION['Id'];
+  $Description=$_POST["description"];
 
   //image upload file
 
@@ -105,14 +72,13 @@ if(isset($_POST["add"])){
       } else {
           echo "Sorry, there was an error uploading your file.";
       }
-  
-  $sql="insert into article (title,categorie,description,image,city,country,id_autor) values ('$Title','$Categorie','$Description','$target_file','$City','$Country','$idautor')";
-  
+  }
+  $sql="insert into event (title,description,image,city,country) values ('$Title','$Description','$target_file','$city','$country')";
   if ($conn->query($sql) === TRUE) {
       echo "New article created successfully";
       
      } 
-   }}
+   }
   ?><a href="logout.php">Logout</a>
   <?php
   } 
@@ -125,5 +91,5 @@ else{
 </div>
 
 </body>
-  
+
 </html>

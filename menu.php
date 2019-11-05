@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,36 +15,54 @@
 	<title></title>
 
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">LOGO</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
+<body><div class="row">
+  <div class="col-3">
+   </div>
+  <div class="col-6">
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active" href="home.php">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="About.php">About</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="myspace.php">Myspace</a>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link" href="categories.php">Star surfing</a>
+  </li>
+</ul>
+</div>
+ <div class="col-3">
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link" href="login.php" id="login">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="myspace.php">myspace</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="myspace.php" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          Admin
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="add.php">Add article</a>
-         
-        </div>
-      </li>
-
-    </ul>
-    
+      <a class="nav-link" href="register.php" id="joinus">Join Us</a>
+      </li></ul></div>
 </div>
-</nav>
 
+<br><hr><br>
+  <?php 
+if (isset($_SESSION['Id'])){  ?>
+<script>
+document.getElementById("login").style.display = "none";
+document.getElementById("joinus").style.display = "none";
+
+</script>
+<?php }
+else {  ?>
+
+<script>
+
+</script>
+
+<?php 
+}
+?>
+    
 </body>
-
 </html>
